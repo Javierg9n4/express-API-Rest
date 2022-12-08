@@ -12,6 +12,6 @@ const studentParamsValidator = [
   },
 ];
 
-module.exports = { 
-  studentParamsValidator
-}
+module.exports = {
+  studentParamsValidator,
+};

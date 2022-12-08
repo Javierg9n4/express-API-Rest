@@ -13,5 +13,5 @@ const teacherParamsValidator = [
 ];
 
 module.exports = {
-  teacherParamsValidator
-}
+  teacherParamsValidator,
+};

@@ -29,7 +29,10 @@ const createNewTeacher = async (teacherData) => {
 
 const updateTeacher = async (teacherId, teacherData) => {
   try {
-    const updatedTeacher = await teacherRepository.updateTeacher(teacherId, teacherData);
+    const updatedTeacher = await teacherRepository.updateTeacher(
+      teacherId,
+      teacherData
+    );
     return updatedTeacher;
   } catch (error) {
     throw error;
@@ -47,18 +50,19 @@ const deleteTeacher = async (teacherId) => {
 
 const checkIfAssociatedUserIsActive = async (teacherId) => {
   try {
-    const associatedStudents = await teacherRepository.checkIfAssociatedUserIsActive(teacherId);
+    const associatedStudents =
+      await teacherRepository.checkIfAssociatedUserIsActive(teacherId);
     return associatedStudents;
   } catch (error) {
     throw error;
   }
 };
 
-module.exports = { 
+module.exports = {
   getAllTeachers,
   getTeacherById,
   createNewTeacher,
   updateTeacher,
   deleteTeacher,
-  checkIfAssociatedUserIsActive
-}
+  checkIfAssociatedUserIsActive,
+};

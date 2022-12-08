@@ -28,9 +28,14 @@ const getUserById = async (userId) => {
 
 const createNewUser = async (userData) => {
   try {
-    const isAlreadyRegistered = await db.Users.findOne({where: { email: userData.email }});
+    const isAlreadyRegistered = await db.Users.findOne({
+      where: { email: userData.email },
+    });
     if (isAlreadyRegistered) {
-      throw {status: 400, message: "User already registered with provided email"};
+      throw {
+        status: 400,
+        message: "User already registered with provided email",
+      };
     }
     const newUser = await db.Users.create(userData);
     return newUser;
@@ -64,7 +69,9 @@ const deleteUser = async (userId) => {
       throw { status: 404, message: "User not found for provided user id" };
     }
 
-    const hasStudents = await db.Teachers.findOne({where: { UserId: userId }});
+    const hasStudents = await db.Teachers.findOne({
+      where: { UserId: userId },
+    });
     if (hasStudents) {
       throw {
         status: 403,
@@ -88,14 +95,14 @@ const checkAndUpdateUserStatus = async (userId) => {
       throw { status: 404, message: "User not found provided id" };
     }
 
-    if(isAlreadyRegistered.active === true) {
+    if (isAlreadyRegistered.active === true) {
       return isAlreadyRegistered;
     } else {
-      await db.Users.update({active: true}, {where: { id: userId}});
+      await db.Users.update({ active: true }, { where: { id: userId } });
 
-      const activeUser = await db.Users.findOne({where: { id: userId}});
+      const activeUser = await db.Users.findOne({ where: { id: userId } });
 
-      return activeUser
+      return activeUser;
     }
   } catch (error) {
     throw { status: 500, message: error?.message || error };
@@ -125,5 +132,5 @@ module.exports = {
   updateUser,
   deleteUser,
   checkAndUpdateUserStatus,
-  checkUserStatus
+  checkUserStatus,
 };

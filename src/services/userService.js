@@ -5,7 +5,7 @@ const getAllUsers = async () => {
     const allUsers = await userRepository.getAllUsers();
     return allUsers;
   } catch (error) {
-    throw error
+    throw error;
   }
 };
 
@@ -14,7 +14,7 @@ const getUserById = async (userId) => {
     const userById = await userRepository.getUserById(userId);
     return userById;
   } catch (error) {
-    throw error
+    throw error;
   }
 };
 
@@ -23,16 +23,16 @@ const createNewUser = async (userData) => {
     const newUser = await userRepository.createNewUser(userData);
     return newUser;
   } catch (error) {
-    throw error
+    throw error;
   }
 };
 
 const updateUser = async (userId, userData) => {
   try {
-    const updatedUser = await userRepository.updateUser(userId, userData)
+    const updatedUser = await userRepository.updateUser(userId, userData);
     return updatedUser;
   } catch (error) {
-    throw error
+    throw error;
   }
 };
 
@@ -41,7 +41,7 @@ const deleteUser = async (userId) => {
     const deletedUser = await userRepository.deleteUser(userId);
     return deletedUser;
   } catch (error) {
-    throw error
+    throw error;
   }
 };
 
@@ -70,5 +70,5 @@ module.exports = {
   updateUser,
   deleteUser,
   checkAndUpdateUserStatus,
-  checkUserStatus
+  checkUserStatus,
 };

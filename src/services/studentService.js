@@ -29,7 +29,10 @@ const createNewStudent = async (studentData) => {
 
 const updateStudent = async (studentId, studentData) => {
   try {
-    const updatedStudent = await studentRepository.updateStudent(studentId, studentData);
+    const updatedStudent = await studentRepository.updateStudent(
+      studentId,
+      studentData
+    );
     return updatedStudent;
   } catch (error) {
     throw error;
@@ -45,11 +48,10 @@ const deleteStudent = async (studentId) => {
   }
 };
 
-
 module.exports = {
   getAllStudents,
   getStudentById,
   createNewStudent,
   updateStudent,
-  deleteStudent
-}
+  deleteStudent,
+};
