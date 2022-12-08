@@ -65,11 +65,6 @@ const updateTeacher = async (teacherId, teacherData) => {
     if (isAlreadyRegistered.UserId !== teacherData.UserId){
       throw { status: 403, message: "Cannot update UserId"}
     }
-    /* const checkIfUserAlreadyHasTeacher = await db.Teachers.findOne({where: {UserId: teacherData.UserId}})
-
-    if (checkIfUserAlreadyHasTeacher) {
-      throw { status: 404, message: "There is already a teacher associated with provided UserId" };
-    }; */
 
     await db.Teachers.update(teacherData, { where:{ id: teacherId}});
     const updatedTeacher = await db.Teachers.findOne({where: { id: teacherId }});
@@ -97,7 +92,7 @@ const deleteTeacher = async (teacherId) => {
     }
 
     await db.Teachers.destroy({where: {id: teacherId}})
-    return { status: "success", message: "Teacher deletedsuccessfully" };
+    return { status: "success", message: "Teacher deleted successfully" };
   } catch (error) {
     throw { status: 500, message: error?.message || error };
   }
