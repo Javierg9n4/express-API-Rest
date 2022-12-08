@@ -63,11 +63,35 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const checkAndUpdateUserStatus = async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const activeUser = await userService.checkAndUpdateUserStatus(userId);
+    res.status(200).json(activeUser)
+  } catch (error) {
+    res.status(error?.status || 500).json({status: "FAILED", data: {error: error?.message || error}})
+  }
+};
+
+const checkUserStatus = async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const userStatus = await userService.checkUserStatus(userId);
+    res.status(200).json({active: userStatus})
+  } catch (error) {
+    res.status(error?.status || 500).json({status: "FAILED", data: {error: error?.message || error}})
+  }
+};
+
 
 module.exports = {
   getAllUsers,
   getUserById,
   createNewUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  checkAndUpdateUserStatus,
+  checkUserStatus
 };

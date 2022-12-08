@@ -45,11 +45,20 @@ const deleteTeacher = async (teacherId) => {
   }
 };
 
+const checkIfAssociatedUserIsActive = async (teacherId) => {
+  try {
+    const associatedStudents = await teacherRepository.checkIfAssociatedUserIsActive(teacherId);
+    return associatedStudents;
+  } catch (error) {
+    throw error;
+  }
+};
 
 module.exports = { 
   getAllTeachers,
   getTeacherById,
   createNewTeacher,
   updateTeacher,
-  deleteTeacher
+  deleteTeacher,
+  checkIfAssociatedUserIsActive
 }

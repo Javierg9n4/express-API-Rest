@@ -78,10 +78,52 @@ const deleteUser = async (userId) => {
   }
 };
 
+const checkAndUpdateUserStatus = async (userId) => {
+  try {
+    const isAlreadyRegistered = await db.Users.findOne({
+      where: { id: userId },
+    });
+
+    if (!isAlreadyRegistered) {
+      throw { status: 404, message: "User not found provided id" };
+    }
+
+    if(isAlreadyRegistered.active === true) {
+      return isAlreadyRegistered;
+    } else {
+      await db.Users.update({active: true}, {where: { id: userId}});
+
+      const activeUser = await db.Users.findOne({where: { id: userId}});
+
+      return activeUser
+    }
+  } catch (error) {
+    throw { status: 500, message: error?.message || error };
+  }
+};
+
+const checkUserStatus = async (userId) => {
+  try {
+    const isAlreadyRegistered = await db.Users.findOne({
+      where: { id: userId },
+    });
+
+    if (!isAlreadyRegistered) {
+      throw { status: 404, message: "User not found provided id" };
+    }
+    const userStatus = isAlreadyRegistered.active;
+    return userStatus;
+  } catch (error) {
+    throw { status: 500, message: error?.message || error };
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
   createNewUser,
   updateUser,
   deleteUser,
+  checkAndUpdateUserStatus,
+  checkUserStatus
 };

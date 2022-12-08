@@ -98,6 +98,34 @@ const deleteTeacher = async (teacherId) => {
   }
 };
 
+const checkIfAssociatedUserIsActive = async (teacherId) => {
+  try {
+    const isAlreadyRegistered = await db.Teachers.findOne({where: { id: teacherId }})
+
+    if (!isAlreadyRegistered){
+      throw { status: 404, message: "Teacher not found with provided id" };
+    }
+
+    const checkAssociatedUser = await db.Users.findOne({where: {id: isAlreadyRegistered.UserId}});
+
+    if (!checkAssociatedUser) {
+      throw { status: 404, message: "User not found with provided UserId" };
+    } else if (checkAssociatedUser.active === false) {
+      throw { status: 401, message: "Associated user is not active" };
+    }
+
+    const associatedStudents = await db.Students.findAll({where: {TeacherId: teacherId}, order: [["date_of_birth", "DESC"]]});
+
+    if (!associatedStudents || associatedStudents.length === 0) {
+      throw { status: 404, message: "Selected teacher has not associated students"}
+    }
+    return associatedStudents;
+
+  } catch (error) {
+    throw { status: 500, message: error?.message || error };
+  }
+};
+
 
 
 module.exports = {
@@ -105,7 +133,8 @@ module.exports = {
   getTeacherById,
   createNewTeacher,
   updateTeacher,
-  deleteTeacher
+  deleteTeacher,
+  checkIfAssociatedUserIsActive
 }
 
 /* 

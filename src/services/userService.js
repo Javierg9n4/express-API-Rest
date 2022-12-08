@@ -45,11 +45,30 @@ const deleteUser = async (userId) => {
   }
 };
 
+const checkAndUpdateUserStatus = async (userId) => {
+  try {
+    const activeUser = await userRepository.checkAndUpdateUserStatus(userId);
+    return activeUser;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const checkUserStatus = async (userId) => {
+  try {
+    const userStatus = await userRepository.checkUserStatus(userId);
+    return userStatus;
+  } catch (error) {
+    throw error;
+  }
+};
 
 module.exports = {
   getAllUsers,
   getUserById,
   createNewUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  checkAndUpdateUserStatus,
+  checkUserStatus
 };

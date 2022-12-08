@@ -72,13 +72,25 @@ const deleteTeacher = async (req, res) => {
   } catch (error) {
     res.status(error?.status || 500).json({status: "FAILED", data: {error: error?.message || error}})
   }
-
-
 };
+
+const checkIfAssociatedUserIsActive = async (req, res) => {
+  const teacherId = req.params.id;
+  
+  try {
+    const associatedStudents = await teacherService.checkIfAssociatedUserIsActive(teacherId);
+    res.status(200).json(associatedStudents)
+  } catch (error) {
+    res.status(error?.status || 500).json({status: "FAILED", data: {error: error?.message || error}})
+  }
+};
+
+
 module.exports = {
   getAllTeachers,
   getTeacherById,
   createNewTeacher,
   updateTeacher,
-  deleteTeacher
+  deleteTeacher,
+  checkIfAssociatedUserIsActive
 }
