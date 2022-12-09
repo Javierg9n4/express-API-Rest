@@ -8,7 +8,7 @@ const getAllStudents = async () => {
     }
     return allStudents;
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 
@@ -20,7 +20,7 @@ const getStudentById = async (studentId) => {
     }
     return studentById;
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 
@@ -51,7 +51,7 @@ const createNewStudent = async (studentData) => {
     const newStudent = await db.Students.create(studentData);
     return newStudent;
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 
@@ -75,7 +75,7 @@ const updateStudent = async (studentId, studentData) => {
     });
     return updatedStudent;
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 
@@ -92,7 +92,7 @@ const deleteStudent = async (studentId) => {
     await db.Students.destroy({ where: { id: studentId } });
     return { status: "success", message: "Student deleted successfully" };
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 

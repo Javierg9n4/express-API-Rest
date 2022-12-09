@@ -8,7 +8,7 @@ const getAllUsers = async () => {
     }
     return allUsers;
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error };
   }
 };
 
@@ -22,7 +22,7 @@ const getUserById = async (userId) => {
     }
     return user;
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 
@@ -40,7 +40,7 @@ const createNewUser = async (userData) => {
     const newUser = await db.Users.create(userData);
     return newUser;
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 
@@ -56,7 +56,7 @@ const updateUser = async (userId, userData) => {
     const updatedUser = await db.Users.findOne({ where: { id: userId } });
     return updatedUser;
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 
@@ -81,7 +81,7 @@ const deleteUser = async (userId) => {
     await db.Users.destroy({ where: { id: userId } });
     return { status: "success", message: "User deletedsuccessfully" };
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 
@@ -105,7 +105,7 @@ const checkAndUpdateUserStatus = async (userId) => {
       return activeUser;
     }
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 
@@ -121,7 +121,7 @@ const checkUserStatus = async (userId) => {
     const userStatus = isAlreadyRegistered.active;
     return userStatus;
   } catch (error) {
-    throw { status: 500, message: error?.message || error };
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 };
 
