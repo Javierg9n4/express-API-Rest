@@ -4,13 +4,11 @@ const env = require("dotenv").config({
   path: path.resolve(__dirname, "../..", ".env"),
 }).parsed;
 
-const createJWT = () => {
-  console.log("hola")
-  const JWT_SECRET = `"${env.JWT_SECRET}"`;
+const JWT_SECRET = `"${env.JWT_SECRET}"`;
 
-  const token = jwt.sign({ data: "jwt value" }, JWT_SECRET, {
-    expiresIn: "24h",
-  });
+const createJWT = () => {
+  
+  const token = jwt.sign({ data: "jwt value" }, JWT_SECRET, {expiresIn: "24h"});
 
   return token;
 };

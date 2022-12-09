@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
 const { userParamsValidator } = require("../validators/userValidator");
-const { isAuth } = require("../middleware/auth");
+const { isAuthByJwt } = require("../middleware/authJwt");
 
-router.get("/", isAuth, userController.getAllUsers);
+router.get("/", isAuthByJwt, userController.getAllUsers);
 router.get("/:id", userController.getUserById);
 router.post("/", userParamsValidator, userController.createNewUser);
 router.put("/:id", userParamsValidator, userController.updateUser);

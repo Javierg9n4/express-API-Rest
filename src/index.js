@@ -11,7 +11,7 @@ const v1StudentRouter = require("./routes/studentRoutes");
 
 app.use(express.json());
 
-const jwt = require("jsonwebtoken");
+/* const jwt = require("jsonwebtoken");
 const env = require("dotenv").config({
   path: path.resolve(__dirname, "../", ".env"),
 }).parsed;
@@ -22,11 +22,11 @@ app.get("/api/jwt/set", (req, res) => {
   const token = jwt.sign({data: "jwt value"}, JWT_SECRET, {expiresIn: "24h"});
   res.json({token: token});
 })
+ */
 
 
 
-
-//app.use("api/jwt", v1JwtAuthRouter)
+app.use("/api/jwt", v1JwtAuthRouter)
 app.use("/api/users", v1UserRouter);
 app.use("/api/teachers", v1TeacherRouter);
 app.use("/api/students", v1StudentRouter);
