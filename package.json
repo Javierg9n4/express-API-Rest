@@ -17,10 +17,12 @@
   "author": "flopez@veridas.com",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-validator": "^6.14.2",
     "fs": "^0.0.1-security",
     "https": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^2.3.0",
     "path": "^0.12.7",
     "pg": "^8.8.0",
