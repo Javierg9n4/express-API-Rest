@@ -3,8 +3,9 @@ const router = express.Router();
 const userController = require("../controllers/userController");
 const { userParamsValidator } = require("../validators/userValidator");
 const { isAuthByJwt } = require("../middleware/authJwt");
+const { isAuthBySession } = require("../middleware/authSession")
 
-router.get("/", isAuthByJwt, userController.getAllUsers);
+router.get("/", isAuthBySession, userController.getAllUsers);
 router.get("/:id", userController.getUserById);
 router.post("/", userParamsValidator, userController.createNewUser);
 router.put("/:id", userParamsValidator, userController.updateUser);

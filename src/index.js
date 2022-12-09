@@ -4,28 +4,22 @@ const PORT = 443;
 const fs = require("fs");
 const https = require("https");
 const path = require("path");
-const v1JwtAuthRouter = require("./routes/jwtAuthRoutes")
+const session = require("express-session");
+const env = require("dotenv").config({path: path.resolve(__dirname, "../", ".env")}).parsed;
+const v1SessionRouter = require("./routes/sessionAuthRoutes");
+const v1JwtAuthRouter = require("./routes/jwtAuthRoutes");
 const v1UserRouter = require("./routes/userRoutes");
 const v1TeacherRouter = require("./routes/teacherRoutes");
 const v1StudentRouter = require("./routes/studentRoutes");
 
 app.use(express.json());
+app.use(session({
+  secret : `"${env.SESSION_SECRET}"`,
+  resave: false,
+  saveUninitialized: false
+}));
 
-/* const jwt = require("jsonwebtoken");
-const env = require("dotenv").config({
-  path: path.resolve(__dirname, "../", ".env"),
-}).parsed;
-
-const JWT_SECRET = `"${env.JWT_SECRET}"`;
-
-app.get("/api/jwt/set", (req, res) => {
-  const token = jwt.sign({data: "jwt value"}, JWT_SECRET, {expiresIn: "24h"});
-  res.json({token: token});
-})
- */
-
-
-
+app.use("/api/session", v1SessionRouter)
 app.use("/api/jwt", v1JwtAuthRouter)
 app.use("/api/users", v1UserRouter);
 app.use("/api/teachers", v1TeacherRouter);
@@ -39,8 +33,3 @@ https.createServer({
   console.log(`App listening on port ${PORT}`);
 })
 
-/* app.listen(PORT, () => {
-  console.log(`App listening on ${PORT}`);
-} */
-
-//testing new branch

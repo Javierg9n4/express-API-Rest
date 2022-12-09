@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const jstAuthController = require("../controllers/jwtAuthController");
+const jwtAuthController = require("../controllers/jwtAuthController");
 
-router.get("/set", jstAuthController.setJwtToken)
+router.get("/set", jwtAuthController.setJwtToken)
 
 module.exports = router;
