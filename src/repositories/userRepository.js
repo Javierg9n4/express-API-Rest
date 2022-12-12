@@ -1,4 +1,29 @@
 const db = require("../db/models");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
+const hashPassword = async (password, saltRounds) => {
+  try {
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    return hashedPassword;
+  } catch (error) {
+    throw { status: error?.status || 500, message: error?.message || error };
+  }
+};
+
+const validatePassword = async (password, hashedPassword) => {
+  try {
+    const validPassword = await bcrypt.compare(password, hashedPassword);
+    if (!validPassword) {
+      throw { status: 403, message: "Invalid password" };
+    }
+
+    return validPassword;
+  } catch (error) {
+    throw { status: error?.status || 500, message: error?.message || error };
+  }
+};
 
 const getAllUsers = async () => {
   try {
@@ -22,7 +47,36 @@ const getUserById = async (userId) => {
     }
     return user;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error }
+    throw { status: error?.status || 500, message: error?.message || error };
+  }
+};
+
+const getUserByUserName = async (userData) => {
+  try {
+    const userRegistered = await db.Users.findOne({
+      where: { email: userData.email },
+    });
+    if (!userRegistered) {
+      throw {
+        status: 404,
+        message: "User not found with provided email",
+      };
+    }
+    const hashedPassword = userRegistered.password;
+    const validPassword = await validatePassword(
+      userData.password,
+      hashedPassword
+    );
+    if (!validPassword) {
+      throw { status: 403, message: "Invalid password" };
+    }
+    return {
+      id: userRegistered.id,
+      email: userRegistered.email,
+      type: userRegistered.type,
+    };
+  } catch (error) {
+    throw { status: error?.status || 500, message: error?.message || error };
   }
 };
 
@@ -37,10 +91,16 @@ const createNewUser = async (userData) => {
         message: "User already registered with provided email",
       };
     }
-    const newUser = await db.Users.create(userData);
+
+    const hashedPassword = await hashPassword(userData.password, saltRounds);
+    const newUserData = {
+      email: userData.email,
+      password: hashedPassword,
+    };
+    const newUser = await db.Users.create(newUserData);
     return newUser;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error }
+    throw { status: error?.status || 500, message: error?.message || error };
   }
 };
 
@@ -56,7 +116,7 @@ const updateUser = async (userId, userData) => {
     const updatedUser = await db.Users.findOne({ where: { id: userId } });
     return updatedUser;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error }
+    throw { status: error?.status || 500, message: error?.message || error };
   }
 };
 
@@ -81,7 +141,7 @@ const deleteUser = async (userId) => {
     await db.Users.destroy({ where: { id: userId } });
     return { status: "success", message: "User deletedsuccessfully" };
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error }
+    throw { status: error?.status || 500, message: error?.message || error };
   }
 };
 
@@ -105,7 +165,7 @@ const checkAndUpdateUserStatus = async (userId) => {
       return activeUser;
     }
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error }
+    throw { status: error?.status || 500, message: error?.message || error };
   }
 };
 
@@ -121,7 +181,7 @@ const checkUserStatus = async (userId) => {
     const userStatus = isAlreadyRegistered.active;
     return userStatus;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error }
+    throw { status: error?.status || 500, message: error?.message || error };
   }
 };
 
@@ -133,4 +193,5 @@ module.exports = {
   deleteUser,
   checkAndUpdateUserStatus,
   checkUserStatus,
+  getUserByUserName,
 };

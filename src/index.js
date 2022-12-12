@@ -5,6 +5,7 @@ const fs = require("fs");
 const https = require("https");
 const path = require("path");
 const session = require("express-session");
+const mustacheExpress = require("mustache-express")
 const env = require("dotenv").config({path: path.resolve(__dirname, "../", ".env")}).parsed;
 const v1SessionRouter = require("./routes/sessionAuthRoutes");
 const v1JwtAuthRouter = require("./routes/jwtAuthRoutes");
@@ -12,6 +13,14 @@ const v1UserRouter = require("./routes/userRoutes");
 const v1TeacherRouter = require("./routes/teacherRoutes");
 const v1StudentRouter = require("./routes/studentRoutes");
 
+app.engine("html", mustacheExpress());
+
+app.set("view engine", "html");
+app.set("views", __dirname + "/views");
+
+app.get("/login", (req, res) => {
+  res.render("login");
+})
 app.use(express.json());
 app.use(session({
   secret : `"${env.SESSION_SECRET}"`,
