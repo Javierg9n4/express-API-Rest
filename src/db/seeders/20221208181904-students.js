@@ -5,88 +5,144 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert("Students", [
       {
-        dni: "73746563a",
-        name: "Pedro",
-        last_name: "Rodriguez",
+        dni: "00000001A",
+        name: "Student",
+        last_name: "One",
         date_of_birth: "1996-05-25",
-        TeacherId: "4bb8b2c1-572b-49a5-b8eb-f9b2aa076219"
+        TeacherId: "5e052f07-d7da-452e-b0a2-9ee607cb93b0"
       },
       {
-        dni: "87345309q",
-        name: "Pablo",
-        last_name: "Garcia",
+        dni: "00000002B",
+        name: "Student",
+        last_name: "Two",
         date_of_birth: "1985-07-30",
-        TeacherId: "4bb8b2c1-572b-49a5-b8eb-f9b2aa076219"
+        TeacherId: "5e052f07-d7da-452e-b0a2-9ee607cb93b0"
       },
       {
-        dni: "12345678L",
-        name: "Ruben",
-        last_name: "Hernandez",
+        dni: "00000003C",
+        name: "Student",
+        last_name: "Three",
         date_of_birth: "1991-12-20",
-        TeacherId: "5b61cb6e-5aa7-4dc9-aac2-ecf3c95ea9a8"
+        TeacherId: "5e052f07-d7da-452e-b0a2-9ee607cb93b0"
       },
       {
-        dni: "23324323R",
-        name: "Rodrigo",
-        last_name: "Sanchez",
+        dni: "00000004D",
+        name: "Student",
+        last_name: "Four",
         date_of_birth: "1973-01-09",
-        TeacherId: "5b61cb6e-5aa7-4dc9-aac2-ecf3c95ea9a8"
+        TeacherId: "5e052f07-d7da-452e-b0a2-9ee607cb93b0"
       },
       {
-        dni: "73746563a",
-        name: "Miguel",
-        last_name: "Rodriguez",
+        dni: "00000005E",
+        name: "Student",
+        last_name: "Five",
         date_of_birth: "1996-05-25",
-        TeacherId: "68c07022-0903-439b-ab03-88e77ebefad8"
+        TeacherId: "bfdfc44d-3b76-4573-91c5-558cb176a963"
       },
       {
-        dni: "87345309q",
-        name: "Sergio",
-        last_name: "Garcia",
+        dni: "00000006F",
+        name: "Student",
+        last_name: "Six",
         date_of_birth: "1985-07-30",
-        TeacherId: "68c07022-0903-439b-ab03-88e77ebefad8"
+        TeacherId: "bfdfc44d-3b76-4573-91c5-558cb176a963"
       },
       {
-        dni: "12345678L",
-        name: "Victor",
-        last_name: "Hernandez",
+        dni: "00000007G",
+        name: "Student",
+        last_name: "Seven",
         date_of_birth: "1991-12-20",
-        TeacherId: "68c07022-0903-439b-ab03-88e77ebefad8"
+        TeacherId: "bfdfc44d-3b76-4573-91c5-558cb176a963"
       },
       {
-        dni: "23324323R",
-        name: "Javier",
-        last_name: "Sanchez",
+        dni: "00000008H",
+        name: "Student",
+        last_name: "Eight",
         date_of_birth: "1973-01-09",
-        TeacherId: "68c07022-0903-439b-ab03-88e77ebefad8"
+        TeacherId: "bfdfc44d-3b76-4573-91c5-558cb176a963"
       },
       {
-        dni: "73746563a",
-        name: "Manuel",
-        last_name: "Rodriguez",
+        dni: "00000009I",
+        name: "Student",
+        last_name: "Nine",
         date_of_birth: "1996-05-25",
-        TeacherId: "cf43ff46-539c-43c6-9b8a-da714ab26fde"
+        TeacherId: "0901b33b-f7ec-4c25-8800-7641ee4d3896"
       },
       {
-        dni: "87345309q",
-        name: "Federico",
-        last_name: "Garcia",
+        dni: "00000010J",
+        name: "Student",
+        last_name: "Ten",
         date_of_birth: "1985-07-30",
-        TeacherId: "cf43ff46-539c-43c6-9b8a-da714ab26fde"
+        TeacherId: "0901b33b-f7ec-4c25-8800-7641ee4d3896"
       },
       {
-        dni: "12345678L",
-        name: "David",
-        last_name: "Hernandez",
+        dni: "00000011K",
+        name: "Student",
+        last_name: "Eleven",
         date_of_birth: "1991-12-20",
-        TeacherId: "cf43ff46-539c-43c6-9b8a-da714ab26fde"
+        TeacherId: "0901b33b-f7ec-4c25-8800-7641ee4d3896"
       },
       {
-        dni: "23324323R",
-        name: "Felix",
-        last_name: "Sanchez",
+        dni: "00000012L",
+        name: "Student",
+        last_name: "Twelve",
         date_of_birth: "1973-01-09",
-        TeacherId: "cf43ff46-539c-43c6-9b8a-da714ab26fde"
+        TeacherId: "0901b33b-f7ec-4c25-8800-7641ee4d3896"
+      },
+      {
+        dni: "00000013M",
+        name: "Student",
+        last_name: "Thirteen",
+        date_of_birth: "1963-11-09",
+        TeacherId: "285a48ed-877a-49ed-86a9-d74a83a0d11f"
+      },
+      {
+        dni: "00000014N",
+        name: "Student",
+        last_name: "Fourteen",
+        date_of_birth: "1992-06-12",
+        TeacherId: "285a48ed-877a-49ed-86a9-d74a83a0d11f"
+      },
+      {
+        dni: "00000015O",
+        name: "Student",
+        last_name: "Fifteen",
+        date_of_birth: "1994-10-05",
+        TeacherId: "285a48ed-877a-49ed-86a9-d74a83a0d11f"
+      },
+      {
+        dni: "00000016P",
+        name: "Student",
+        last_name: "Sixteen",
+        date_of_birth: "1953-01-09",
+        TeacherId: "285a48ed-877a-49ed-86a9-d74a83a0d11f"
+      },
+      {
+        dni: "00000017Q",
+        name: "Student",
+        last_name: "Seventeen",
+        date_of_birth: "1999-11-09",
+        TeacherId: "a07b9b99-6916-4c27-b963-ccb692debaf3"
+      },
+      {
+        dni: "00000018R",
+        name: "Student",
+        last_name: "Eighteen",
+        date_of_birth: "1998-11-09",
+        TeacherId: "a07b9b99-6916-4c27-b963-ccb692debaf3"
+      },
+      {
+        dni: "00000019R",
+        name: "Student",
+        last_name: "Nineteen",
+        date_of_birth: "2001-11-09",
+        TeacherId: "a07b9b99-6916-4c27-b963-ccb692debaf3"
+      },
+      {
+        dni: "00000020S",
+        name: "Student",
+        last_name: "Twenty",
+        date_of_birth: "1959-11-09",
+        TeacherId: "a07b9b99-6916-4c27-b963-ccb692debaf3"
       },
     ],
     {}
