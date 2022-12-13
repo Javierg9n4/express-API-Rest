@@ -7,9 +7,9 @@ const v1StudentRouter = require("./routes/studentRoutes");
 
 app.use(express.json());
 
-app.use("/api/users", v1UserRouter);
-app.use("/api/teachers", v1TeacherRouter);
-app.use("/api/students", v1StudentRouter);
+app.use("/user", v1UserRouter);
+app.use("/teacher", v1TeacherRouter);
+app.use("/student", v1StudentRouter);
 
 app.listen(PORT, () => {
   console.log(`App listening on ${PORT}`);

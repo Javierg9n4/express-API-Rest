@@ -25,8 +25,8 @@ module.exports = {
         {
           id: "0901b33b-f7ec-4c25-8800-7641ee4d3896",
           dni: "33333333C",
-          name: "Three",
-          last_name: "Hernandez",
+          name: "Teacher",
+          last_name: "Three",
           date_of_birth: "1991-12-20",
           UserId: "8479ac50-7628-4303-b3b4-7dfd55d55f54",
         },

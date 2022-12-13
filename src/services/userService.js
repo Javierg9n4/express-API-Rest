@@ -62,7 +62,6 @@ const updateUser = async (userId, userData) => {
 const deleteUser = async (userId) => {
   try {
     const user = await userRepository.getUserById(userId);
-    console.log(user);
 
     if (!user) {
       throw { status: 404, message: "User not found for provided user id" };
