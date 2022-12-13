@@ -14,12 +14,10 @@ const isAuthByJwt = (req, res, next) => {
 
   let authorization = req.headers.authorization;
   let token = authorization.split(" ")[1];
-  console.log(token)
   let jwtData;
 
   try {
     jwtData = jwt.verify(token, JWT_SECRET);
-    console.log(jwtData.data);
   } catch (error) {
     console.error(error);
     return res.status(401).json({message: "Invalid Token"});

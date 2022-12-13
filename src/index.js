@@ -18,15 +18,21 @@ app.engine("html", mustacheExpress());
 app.set("view engine", "html");
 app.set("views", __dirname + "/views");
 
-app.get("/login", (req, res) => {
-  res.render("login");
-})
+
 app.use(express.json());
 app.use(session({
   secret : `"${env.SESSION_SECRET}"`,
   resave: false,
   saveUninitialized: false
 }));
+
+app.get("/login", (req, res) => {
+  res.render("login");
+})
+app.post("/login", (req, res) => {
+  res.send(req.body)
+
+});
 
 app.use("/api/session", v1SessionRouter)
 app.use("/api/jwt", v1JwtAuthRouter)

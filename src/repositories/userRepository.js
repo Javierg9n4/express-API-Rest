@@ -16,7 +16,7 @@ const validatePassword = async (password, hashedPassword) => {
   try {
     const validPassword = await bcrypt.compare(password, hashedPassword);
     if (!validPassword) {
-      throw { status: 403, message: "Invalid password" };
+      throw { status: 403, message: "Invalid username or password" };
     }
 
     return validPassword;
