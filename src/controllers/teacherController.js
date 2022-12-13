@@ -89,12 +89,12 @@ const deleteTeacher = async (req, res) => {
   }
 };
 
-const checkIfAssociatedUserIsActive = async (req, res) => {
+const checkIfAssociatedUserAndReturnStudents = async (req, res) => {
   const teacherId = req.params.id;
 
   try {
     const associatedStudents =
-      await teacherService.checkIfAssociatedUserIsActive(teacherId);
+    await teacherService.checkIfAssociatedUserAndReturnStudents(teacherId);
     res.status(200).json(associatedStudents);
   } catch (error) {
     res
@@ -109,5 +109,5 @@ module.exports = {
   createNewTeacher,
   updateTeacher,
   deleteTeacher,
-  checkIfAssociatedUserIsActive,
+  checkIfAssociatedUserAndReturnStudents,
 };

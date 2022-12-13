@@ -8,6 +8,6 @@ router.get("/:id", teacherController.getTeacherById);
 router.post("/", teacherParamsValidator, teacherController.createNewTeacher);
 router.put("/:id", teacherParamsValidator, teacherController.updateTeacher);
 router.delete("/:id", teacherController.deleteTeacher);
-router.get("/:id/students", teacherController.checkIfAssociatedUserIsActive);
+router.get("/:id/students", teacherController.checkIfAssociatedUserAndReturnStudents);
 
 module.exports = router;

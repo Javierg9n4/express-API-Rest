@@ -58,12 +58,10 @@ const updateStudent = async (req, res) => {
       studentId,
       studentData
     );
-    res
-      .status(200)
-      .json({
-        message: "Student updated succesfully",
-        updatedStudent: updatedStudent,
-      });
+    res.status(200).json({
+      message: "Student updated succesfully",
+      updatedStudent: updatedStudent,
+    });
   } catch (error) {
     res
       .status(error?.status || 500)
