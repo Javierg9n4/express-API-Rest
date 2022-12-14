@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "start-dev": "nodemon src/index.js",
     "migrations": "cd src/db && sequelize db:migrate",
     "undo-migrations": "cd src/db && sequelize db:migrate:undo:all",
     "undo-seeds": "cd src/db && sequelize db:seed:undo:all", 
