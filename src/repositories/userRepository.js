@@ -6,7 +6,11 @@ const getAllUsers = async () => {
 
     return allUsers;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while getting all users, please try again",
+    };
   }
 };
 
@@ -16,7 +20,11 @@ const getUserById = async (userId) => {
 
     return userById;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while getting user by id, please try again",
+    };
   }
 };
 
@@ -26,9 +34,13 @@ const getUserByEmail = async (userData) => {
       where: { email: userData },
     });
 
-    return userByEmail
+    return userByEmail;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while gettin user by id, please try again",
+    };
   }
 };
 
@@ -37,7 +49,11 @@ const createNewUser = async (userData) => {
     const newUser = await db.Users.create(userData);
     return newUser;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while creating new user, please try again",
+    };
   }
 };
 
@@ -47,23 +63,30 @@ const updateUser = async (userId, userData) => {
     const updatedUser = await db.Users.findOne({ where: { id: userId } });
     return updatedUser;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while updating user, please try again",
+    };
   }
 };
 
 const deleteUser = async (userId) => {
   try {
     await db.Users.destroy({ where: { id: userId } });
-    return { status: "success", message: "User deletedsuccessfully" };
+    return { message: "User deletedsuccessfully" };
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    throw {
+      status: 500,
+      message: "Database error while deleting user, please try again",
+    };
   }
 };
 
 module.exports = {
   getAllUsers,
   getUserById,
-  getUserByEmail, 
+  getUserByEmail,
   createNewUser,
   updateUser,
   deleteUser,

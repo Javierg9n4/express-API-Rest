@@ -6,7 +6,11 @@ const getAllTeachers = async () => {
 
     return allTeachers;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while getting all teachers, please try again",
+    };
   }
 };
 
@@ -16,7 +20,11 @@ const getTeacherById = async (teacherId) => {
 
     return teacherbyId;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while getting teacher by id, please try again",
+    };
   }
 };
 
@@ -26,7 +34,11 @@ const createNewTeacher = async (teacherData) => {
 
     return newTeacher;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while creating a new teacher, please try again",
+    };
   }
 };
 
@@ -35,7 +47,11 @@ const updateTeacher = async (teacherId, teacherData) => {
     await db.Teachers.update(teacherData, { where: { id: teacherId } });
     return;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while updating a teacher, please try again",
+    };
   }
 };
 
@@ -45,15 +61,28 @@ const deleteTeacher = async (teacherId) => {
 
     return { status: "success", message: "Teacher deleted successfully" };
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while deleting a teacher, please try again",
+    };
   }
 };
 
 const getTeacherByUserId = async (userId) => {
-  const teacherByUserId = await db.Teachers.findOne({
-    where: { UserId: userId },
-  });
-  return teacherByUserId;
+  try {
+    const teacherByUserId = await db.Teachers.findOne({
+      where: { UserId: userId },
+    });
+    return teacherByUserId;
+  } catch (error) {
+    console.log(error);
+    throw {
+      status: 500,
+      message:
+        "Database error while getting a teacher by UserId, please try again",
+    };
+  }
 };
 
 const getTeacherByDni = async (userData) => {
@@ -63,7 +92,11 @@ const getTeacherByDni = async (userData) => {
     });
     return teacherByDni;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    console.log(error);
+    throw {
+      status: 500,
+      message: "Database error while getting teacher by dni, please try again",
+    };
   }
 };
 

@@ -6,7 +6,7 @@ const getAllStudents = async () => {
 
     return allStudents;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    throw { status: 500, message: "Database error while getting all students" };
   }
 };
 
@@ -16,7 +16,10 @@ const getStudentById = async (studentId) => {
 
     return studentById;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    throw {
+      status: 500,
+      message: "Database error while getting student by id",
+    };
   }
 };
 
@@ -25,7 +28,10 @@ const createNewStudent = async (studentData) => {
     const newStudent = await db.Students.create(studentData);
     return newStudent;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    throw {
+      status: 500,
+      message: "Database error while creating a new student",
+    };
   }
 };
 
@@ -37,7 +43,7 @@ const updateStudent = async (studentId, studentData) => {
     });
     return updatedStudent;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    throw { status: 500, message: "Database error while updating student" };
   }
 };
 
@@ -46,7 +52,7 @@ const deleteStudent = async (studentId) => {
     await db.Students.destroy({ where: { id: studentId } });
     return { status: "success", message: "Student deleted successfully" };
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    throw { status: 500, message: "Database error while deleting student" };
   }
 };
 
@@ -57,16 +63,26 @@ const getStudentByTeacherId = async (teacherId) => {
     });
     return studentByTeacherId;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    throw {
+      status: 500,
+      message: "Database error while getting student by TeacherId",
+    };
   }
 };
 
 const getStudentsByTeacherIdOrdered = async (teacherId) => {
-  const associatedStudents = await db.Students.findAll({
-    where: { TeacherId: teacherId },
-    order: [["date_of_birth", "DESC"]],
-  });
-  return associatedStudents;
+  try {
+    const associatedStudents = await db.Students.findAll({
+      where: { TeacherId: teacherId },
+      order: [["date_of_birth", "DESC"]],
+    });
+    return associatedStudents;
+  } catch (error) {
+    throw {
+      status: 500,
+      message: "Database error while getting all sttudents by TeacherId: ",
+    };
+  }
 };
 
 const getStudentByDni = async (studentData) => {
@@ -76,7 +92,10 @@ const getStudentByDni = async (studentData) => {
     });
     return studentByDni;
   } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+    throw {
+      status: 500,
+      message: "Database error while getting student by dni",
+    };
   }
 };
 
