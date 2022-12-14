@@ -12,5 +12,5 @@ app.use("/teacher", v1TeacherRouter);
 app.use("/student", v1StudentRouter);
 
 app.listen(PORT, () => {
-  console.log(`App listening on ${PORT}`);
+  console.log(`App listening on port: ${PORT}`);
 });

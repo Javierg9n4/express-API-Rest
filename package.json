@@ -4,7 +4,7 @@
   "description": "My base project",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "migrations": "cd src/db && sequelize db:migrate",
     "undo-migrations": "cd src/db && sequelize db:migrate:undo:all",
