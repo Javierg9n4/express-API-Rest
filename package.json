@@ -8,7 +8,11 @@
     "dev": "nodemon src/index.js",
     "start-services": "docker-compose -f docker/dev/docker-compose.services.yml up -d --build --force-recreate && exit 0",
     "stop-services": "docker-compose -f docker/dev/docker-compose.services.yml stop",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrations": "cd src/db && sequelize db:migrate",
+    "undo-migrations": "cd src/db && sequelize db:migrate:undo:all",
+    "seeds": "cd src/db && sequelize db:seed:all",
+    "undo-seeds": "cd src/db && sequelize db:seed:undo:all"
   },
   "keywords": [
     "app",
