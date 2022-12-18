@@ -1,4 +1,5 @@
 const userService = require("../services/userService");
+const teacherService = require("../services/teacherService");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -55,7 +56,6 @@ const updateUser = async (req, res) => {
   }
 };
 
-//TODO rework the response
 const deleteUser = async (req, res) => {
   const userId = req.params.id;
 
@@ -89,6 +89,26 @@ const checkUserStatus = async (req, res) => {
   }
 };
 
+const renderUsers = async (req, res) => {
+  try {
+    const allUsers = await userService.getAllUsers();
+    res.status(200).render("users", { allUsers: allUsers });
+  } catch (error) {
+    res.status(error?.status || 500).json({ error: error?.message || error });
+  }
+};
+
+const userIsNotAdmin = async (req, res) => {
+  const userId = req.userData.userId;
+  try {
+    const teacherAndStudentsAssociated = await teacherService.getTeacherAndStudentsByUserId(userId);
+
+    res.status(200).render("home", {teacherAndStudentsAssociated: teacherAndStudentsAssociated})
+  } catch (error) {
+    res.status(error?.status || 500).json({ error: error?.message || error });
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -97,4 +117,7 @@ module.exports = {
   deleteUser,
   checkAndUpdateUserStatus,
   checkUserStatus,
+  renderUsers,
+  //userHome,
+  userIsNotAdmin
 };

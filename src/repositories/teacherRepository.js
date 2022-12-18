@@ -85,10 +85,10 @@ const getTeacherByUserId = async (userId) => {
   }
 };
 
-const getTeacherByDni = async (userData) => {
+const getTeacherByDni = async (teacherData) => {
   try {
     const teacherByDni = await db.Teachers.findOne({
-      where: { dni: userData.dni },
+      where: { dni: teacherData.dni },
     });
     return teacherByDni;
   } catch (error) {

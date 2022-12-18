@@ -30,6 +30,7 @@ const getUserById = async (userId) => {
 
 const getUserByEmail = async (userData) => {
   try {
+
     const userByEmail = await db.Users.findOne({
       where: { email: userData },
     });
@@ -39,7 +40,7 @@ const getUserByEmail = async (userData) => {
     console.log(error);
     throw {
       status: 500,
-      message: "Database error while gettin user by id, please try again",
+      message: "Database error while gettin user by email, please try again",
     };
   }
 };
@@ -74,7 +75,7 @@ const updateUser = async (userId, userData) => {
 const deleteUser = async (userId) => {
   try {
     await db.Users.destroy({ where: { id: userId } });
-    return { message: "User deletedsuccessfully" };
+    return { message: "User deleted successfully" };
   } catch (error) {
     throw {
       status: 500,

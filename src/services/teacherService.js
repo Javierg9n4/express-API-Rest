@@ -118,6 +118,58 @@ const checkIfAssociatedUserAndReturnStudents = async (teacherId) => {
   return associatedStudents;
 };
 
+const getTeacherAndStudentsByUserId = async (userId) => {
+  const teacherByUserId = await teacherRepository.getTeacherByUserId(userId);
+
+  if (!teacherByUserId) {
+    throw {status: 404, message: "Teacher not found with provided user id"};
+  }
+  const {dataValues} = teacherByUserId;
+
+  const associatedStudents = await studentRepository.getStudentsByTeacherIdOrdered(teacherByUserId.id);
+
+  const studentsData = associatedStudents.map(student => student.dataValues);
+  
+  const teacherAndStudentData = {teacher: dataValues, students: studentsData};
+  
+  return teacherAndStudentData
+};
+
+const createNewTeacherOrDeleteUser = async (teacherData) => {
+  const isAlreadyRegistered = await teacherRepository.getTeacherByDni(
+    teacherData
+  );
+
+  if (isAlreadyRegistered) {
+    await userRepository.deleteUser(teacherData.UserId)
+    console.log("teacher already registered, user deleted");
+    throw {
+      status: 422,
+      message: "Teacher already registered with provided dni, user deleted",
+    };
+  }
+
+  /* const userExists = await userRepository.getUserById(teacherData.UserId);
+
+  if (!userExists) {
+    throw { status: 404, message: "User not found for provided user id" };
+  }
+
+  const checkIfUserAlreadyHasTeacher =
+    await teacherRepository.getTeacherByUserId(teacherData.UserId);
+
+  if (checkIfUserAlreadyHasTeacher) {
+    throw {
+      status: 403,
+      message: "There is already a teacher associated with provided UserId",
+    };
+  } */
+
+  const newTeacher = await teacherRepository.createNewTeacher(teacherData);
+
+  return newTeacher;
+};
+
 module.exports = {
   getAllTeachers,
   getTeacherById,
@@ -125,4 +177,6 @@ module.exports = {
   updateTeacher,
   deleteTeacher,
   checkIfAssociatedUserAndReturnStudents,
+  getTeacherAndStudentsByUserId,
+  createNewTeacherOrDeleteUser
 };

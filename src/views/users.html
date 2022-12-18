@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+</head>
+<body>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Tipo</th>
+      <th>Activo</th>
+    </tr>
+    {{#allUsers}}
+    <tr>
+      <td>{{dataValues.id}}</td>
+      <td>{{dataValues.email}}</td>
+      <td>{{dataValues.password}}</td>
+      <td>{{dataValues.type}}</td>
+      <td>{{dataValues.active}}</td>
+    </tr>
+    {{/allUsers}}
+  </table>
+  <form method="post" action="/users">
+    <input type="submit" value="Cerrar sesión" />
+  </form>
+
+  
+</body>
+</html>

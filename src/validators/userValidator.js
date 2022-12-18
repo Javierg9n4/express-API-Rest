@@ -9,6 +9,14 @@ const userParamsValidator = [
   },
 ];
 
+const userEmailValidator = [
+  check("email").exists().isEmail(),
+  (req, res, next) => {
+    validateResult(req, res, next);
+  },
+]
+
 module.exports = {
   userParamsValidator,
+  userEmailValidator
 };

@@ -1,5 +1,6 @@
 const userRepository = require("../repositories/userRepository");
 const teacherRepository = require("../repositories/teacherRepository");
+const pswEncryption = require("../authentication/pswEncryption")
 
 const getAllUsers = async () => {
   const allUsers = await userRepository.getAllUsers();
@@ -30,8 +31,9 @@ const createNewUser = async (userData) => {
       message: "User already registered with provided email",
     };
   }
-
-  const newUser = await userRepository.createNewUser(userData);
+  const hashedPassword = await pswEncryption.hashPassword(userData.password);
+  const encryptedUserData = {email: userData.email, password: hashedPassword}
+  const newUser = await userRepository.createNewUser(encryptedUserData);
   return newUser;
 };
 
@@ -93,6 +95,26 @@ const checkUserStatus = async (userId) => {
   return userStatus;
 };
 
+const createNewUserTypeTeacher = async (userData) => {
+  const isAlreadyRegistered = await userRepository.getUserByEmail(
+    userData.email
+  );
+
+  if (isAlreadyRegistered) {
+    throw {
+      status: 422,
+      message: "User already registered with provided email",
+    };
+  }
+  const hashedPassword = await pswEncryption.hashPassword(userData.password);
+  const encryptedUserData = {email: userData.email, password: hashedPassword, type: "teacher"}
+  const newUser = await userRepository.createNewUser(encryptedUserData);
+  console.log("user created")
+  return newUser;
+};
+
+
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -101,4 +123,5 @@ module.exports = {
   deleteUser,
   checkAndUpdateUserStatus,
   checkUserStatus,
+  createNewUserTypeTeacher
 };
