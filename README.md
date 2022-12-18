@@ -5,6 +5,7 @@ Para inicializar el proyecto siga los siguientes pasos:
 3. Ejecutar las migraciones de la base de datos: "npm run migrations".
 4. Poblar la base de datos ejecutando los seeders: "npm run seeds".
 5. Levantar la aplicacion: "npm run start".
+6. Ejecutar los tests: "npm run test".
 
 Para deshacer los seeders: "npm run undo-seeds".
 Para deshacer las migraciones: "npm run undo-migrations".
