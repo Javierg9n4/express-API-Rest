@@ -8,10 +8,12 @@ module.exports = {
         primaryKey: true,
         defaultValue: Sequelize.literal("uuid_generate_v4()"),
         allowNull: false,
+        unique: true
       },
       dni: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true
       },
       name: {
         type: Sequelize.STRING,

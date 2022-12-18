@@ -3,11 +3,11 @@ const studentService = require("../services/studentService");
 const getAllStudents = async (req, res) => {
   try {
     const allStudents = await studentService.getAllStudents();
-    res.status(200).json(allStudents);
-  } catch (error) {
     res
-      .status(error?.status || 500)
-      .json({ status: "FAILED", data: { error: error?.message || error } });
+      .status(200)
+      .json({ message: "All students found", allStudents: allStudents });
+  } catch (error) {
+    res.status(error?.status || 500).json({ error: error?.message || error });
   }
 };
 
@@ -16,11 +16,11 @@ const getStudentById = async (req, res) => {
 
   try {
     const studentById = await studentService.getStudentById(studentId);
-    res.status(200).json(studentById);
-  } catch (error) {
     res
-      .status(error?.status || 500)
-      .json({ status: "FAILED", data: { error: error?.message || error } });
+      .status(200)
+      .json({ message: "Student by id found", studentById: studentById });
+  } catch (error) {
+    res.status(error?.status || 500).json({ error: error?.message || error });
   }
 };
 
@@ -35,11 +35,11 @@ const createNewStudent = async (req, res) => {
 
   try {
     const newStudent = await studentService.createNewStudent(studentData);
-    res.status(200).json(newStudent);
-  } catch (error) {
     res
-      .status(error?.status || 500)
-      .json({ status: "FAILED", data: { error: error?.message || error } });
+      .status(200)
+      .json({ message: "New student created", newStudent: newStudent });
+  } catch (error) {
+    res.status(error?.status || 500).json({ error: error?.message || error });
   }
 };
 
@@ -58,16 +58,12 @@ const updateStudent = async (req, res) => {
       studentId,
       studentData
     );
-    res
-      .status(200)
-      .json({
-        message: "Student updated succesfully",
-        updatedStudent: updatedStudent,
-      });
+    res.status(200).json({
+      message: "Student updated succesfully",
+      updatedStudent: updatedStudent,
+    });
   } catch (error) {
-    res
-      .status(error?.status || 500)
-      .json({ status: "FAILED", data: { error: error?.message || error } });
+    res.status(error?.status || 500).json({ error: error?.message || error });
   }
 };
 
@@ -78,9 +74,7 @@ const deleteStudent = async (req, res) => {
     const deletedStudent = await studentService.deleteStudent(studentId);
     res.status(200).json(deletedStudent);
   } catch (error) {
-    res
-      .status(error?.status || 500)
-      .json({ status: "FAILED", data: { error: error?.message || error } });
+    res.status(error?.status || 500).json({ error: error?.message || error });
   }
 };
 

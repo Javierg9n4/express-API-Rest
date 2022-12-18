@@ -11,4 +11,5 @@ router.delete("/:id", userController.deleteUser);
 router.post("/:id/active", userController.checkAndUpdateUserStatus);
 router.get("/:id/active", userController.checkUserStatus);
 
+
 module.exports = router;

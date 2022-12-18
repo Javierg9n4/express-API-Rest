@@ -9,10 +9,12 @@ module.exports = {
         primaryKey: true,
         defaultValue: Sequelize.literal('uuid_generate_v4()'),
         allowNull: false,
+        unique: true
       },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       password: {
         type: Sequelize.STRING,
@@ -20,7 +22,8 @@ module.exports = {
       },
       active: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false
+        allowNull: false,
+        defaultValue: true
       },
       createdAt: {
         allowNull: false,

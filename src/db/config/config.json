@@ -2,7 +2,14 @@
   "development": {
     "username": "postgres",
     "password": "1234",
-    "database": "express-db-test3",
+    "database": "express-db-JGOMEZ",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "1234",
+    "database": "express-db-JGOMEZ",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

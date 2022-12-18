@@ -1,0 +1,102 @@
+<!-- views/user.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>User logged</h1>
+    <!-- <table border="1">
+  <tr>
+    <th>ID</th>
+    <th>DNI</th>
+    <th>NAME</th>
+    <th>LAST NAME</th>
+    <th>DATE OF BIRTH</th>
+  </tr>
+    {{#teacherAndStudentsAssociated}}
+  <tr>
+    <td>{{id}}</td>
+    <td>{{dni}}</td>
+    <td>{{name}}</td>
+    <td>{{last_name}}</td>
+    <td>{{date_of_birth}}</td>
+  </tr>
+{{/teacherAndStudentsAssociated}}
+</table>
+ -->
+
+    <!-- <table border="1">
+  <tr>
+    <th>ID</th>
+    <th>DNI</th>
+    <th>NAME</th>
+    <th>LAST NAME</th>
+    <th>DATE OF BIRTH</th>
+  </tr>
+    {{#teacherAndStudentsAssociated}}
+  <tr>
+    <td>{{id}}</td>
+    <td>{{dni}}</td>
+    <td>{{name}}</td>
+    <td>{{last_name}}</td>
+    <td>{{date_of_birth}}</td>
+  </tr>
+{{/teacherAndStudentsAssociated}}
+</table>
+ -->
+    <p>Teacher Info</p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>DNI</th>
+          <th>NAME</th>
+          <th>LAST NAME</th>
+          <th>DATE OF BIRTH</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ teacherAndStudentsAssociated.teacher.id }}</td>
+          <td>{{ teacherAndStudentsAssociated.teacher.dni }}</td>
+          <td>{{ teacherAndStudentsAssociated.teacher.name }}</td>
+          <td>{{ teacherAndStudentsAssociated.teacher.last_name }}</td>
+          <td>{{ teacherAndStudentsAssociated.teacher.date_of_birth }}</td>
+    
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Students Info</p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>DNI</th>
+          <th>NAME</th>
+          <th>LAST NAME</th>
+          <th>DATE OF BIRTH</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#teacherAndStudentsAssociated.students}}
+        <tr>
+          <td>{{ id }}</td>
+          <td>{{ dni }}</td>
+          <td>{{ name }}</td>
+          <td>{{ last_name }}</td>
+          <td>{{ date_of_birth }}</td>
+        </tr>
+        {{/teacherAndStudentsAssociated.students}}
+      </tbody>
+    </table>
+
+    <form method="post" action="/logout">
+      <input type="submit" value="Cerrar sesión" />
+    </form>
+  </body>
+</html>
