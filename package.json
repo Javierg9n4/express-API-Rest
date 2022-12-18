@@ -4,12 +4,11 @@
   "description": "My base project",
   "main": "app.js",
   "scripts": {
-    "start": "node src/index.js",
-    "start-dev": "nodemon app.js",
-    "migrations": "cd src/db && sequelize db:migrate",
+    "start": "npm run undo-seeds && npm run seeds && node app.js",
+    "start-dev": "npm run undo-seeds && npm run seeds && nodemon app.js",
+    "db-setup" : "cd src/db && sequelize db:migrate && cd src/db && sequelize db:seed:all",
     "undo-migrations": "cd src/db && sequelize db:migrate:undo:all",
     "undo-seeds": "cd src/db && sequelize db:seed:undo:all",
-    "seeds": "cd src/db && sequelize db:seed:all",
     "start-services": "docker-compose -f docker/dev/docker-compose.services.yml up -d --build --force-recreate && exit 0",
     "stop-services": "docker-compose -f docker/dev/docker-compose.services.yml stop",
     "test": "npm run undo-seeds && npm run seeds && npx jest --coverage --detectOpenHandles"

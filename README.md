@@ -1,11 +1,11 @@
 Para inicializar el proyecto siga los siguientes pasos:
 
-1. Instalar dependencias: "npm install".
+1. Instalar dependencias: "npm i".
 2. Levantar los contenedores docker de la base de datos: "npm run start-services".
-3. Ejecutar las migraciones de la base de datos: "npm run migrations".
-4. Poblar la base de datos ejecutando los seeders: "npm run seeds".
-5. Levantar la aplicacion: "npm run start".
-6. Ejecutar los tests: "npm run test".
+3. Ejecutar migraciones y seeders: "npm run db-setup"
+4. Ejecutar los tests: "npm run test".
+5. Levantar la aplicacion en modo dev: "npm run start-dev".
+6. Levantar la aplicacion sin nodemon: "npm run start"
 
 Para deshacer los seeders: "npm run undo-seeds".
 Para deshacer las migraciones: "npm run undo-migrations".

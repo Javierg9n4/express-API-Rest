@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1671362121488" clover="3.2.0">
-  <project timestamp="1671362121489" name="All files">
-    <metrics statements="691" coveredstatements="633" conditionals="217" coveredconditionals="128" methods="94" coveredmethods="93" elements="1002" coveredelements="854" complexity="0" loc="691" ncloc="691" packages="10" files="29" classes="29"/>
+<coverage generated="1671362910697" clover="3.2.0">
+  <project timestamp="1671362910697" name="All files">
+    <metrics statements="691" coveredstatements="632" conditionals="217" coveredconditionals="125" methods="94" coveredmethods="93" elements="1002" coveredelements="850" complexity="0" loc="691" ncloc="691" packages="10" files="29" classes="29"/>
     <package name="src">
       <metrics statements="27" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="index.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/index.js">
+      <file name="index.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/index.js">
         <metrics statements="27" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -36,15 +36,15 @@
       </file>
     </package>
     <package name="src.authentication">
-      <metrics statements="12" coveredstatements="11" conditionals="8" coveredconditionals="3" methods="2" coveredmethods="2"/>
-      <file name="pswEncryption.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/authentication/pswEncryption.js">
-        <metrics statements="12" coveredstatements="11" conditionals="8" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <metrics statements="12" coveredstatements="10" conditionals="8" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="pswEncryption.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/authentication/pswEncryption.js">
+        <metrics statements="12" coveredstatements="10" conditionals="8" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="6" type="stmt"/>
-        <line num="6" count="6" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
         <line num="8" count="5" type="stmt"/>
-        <line num="10" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="16" type="stmt"/>
         <line num="16" count="16" type="stmt"/>
@@ -55,7 +55,7 @@
     </package>
     <package name="src.controllers">
       <metrics statements="170" coveredstatements="162" conditionals="100" coveredconditionals="36" methods="26" coveredmethods="25"/>
-      <file name="loginController.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/controllers/loginController.js">
+      <file name="loginController.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/controllers/loginController.js">
         <metrics statements="43" coveredstatements="40" conditionals="20" coveredconditionals="6" methods="6" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -101,7 +101,7 @@
         <line num="97" count="0" type="stmt"/>
         <line num="100" count="1" type="stmt"/>
       </file>
-      <file name="studentController.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/controllers/studentController.js">
+      <file name="studentController.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/controllers/studentController.js">
         <metrics statements="32" coveredstatements="31" conditionals="20" coveredconditionals="8" methods="5" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -136,7 +136,7 @@
         <line num="77" count="1" type="cond" truecount="2" falsecount="2"/>
         <line num="81" count="1" type="stmt"/>
       </file>
-      <file name="teacherController.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/controllers/teacherController.js">
+      <file name="teacherController.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/controllers/teacherController.js">
         <metrics statements="38" coveredstatements="37" conditionals="24" coveredconditionals="10" methods="6" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -177,7 +177,7 @@
         <line num="95" count="1" type="cond" truecount="2" falsecount="2"/>
         <line num="99" count="1" type="stmt"/>
       </file>
-      <file name="userController.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/controllers/userController.js">
+      <file name="userController.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/controllers/userController.js">
         <metrics statements="57" coveredstatements="54" conditionals="36" coveredconditionals="12" methods="9" coveredmethods="9"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -240,7 +240,7 @@
     </package>
     <package name="src.db.models">
       <metrics statements="33" coveredstatements="32" conditionals="9" coveredconditionals="6" methods="9" coveredmethods="9"/>
-      <file name="index.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/db/models/index.js">
+      <file name="index.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/db/models/index.js">
         <metrics statements="21" coveredstatements="20" conditionals="9" coveredconditionals="6" methods="3" coveredmethods="3"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -264,21 +264,21 @@
         <line num="36" count="1" type="stmt"/>
         <line num="38" count="1" type="stmt"/>
       </file>
-      <file name="students.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/db/models/students.js">
+      <file name="students.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/db/models/students.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
       </file>
-      <file name="teachers.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/db/models/teachers.js">
+      <file name="teachers.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/db/models/teachers.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
       </file>
-      <file name="users.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/db/models/users.js">
+      <file name="users.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/db/models/users.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
@@ -288,7 +288,7 @@
     </package>
     <package name="src.helpers">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="validationHelper.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/helpers/validationHelper.js">
+      <file name="validationHelper.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/helpers/validationHelper.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -301,7 +301,7 @@
     </package>
     <package name="src.middlewares">
       <metrics statements="47" coveredstatements="43" conditionals="24" coveredconditionals="18" methods="4" coveredmethods="4"/>
-      <file name="authMiddleware.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/middlewares/authMiddleware.js">
+      <file name="authMiddleware.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/middlewares/authMiddleware.js">
         <metrics statements="29" coveredstatements="27" conditionals="8" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -333,7 +333,7 @@
         <line num="54" count="1" type="stmt"/>
         <line num="57" count="1" type="stmt"/>
       </file>
-      <file name="checkIfIsAdmin.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/middlewares/checkIfIsAdmin.js">
+      <file name="checkIfIsAdmin.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/middlewares/checkIfIsAdmin.js">
         <metrics statements="18" coveredstatements="16" conditionals="16" coveredconditionals="12" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="2" type="cond" truecount="1" falsecount="1"/>
@@ -357,7 +357,7 @@
     </package>
     <package name="src.repositories">
       <metrics statements="125" coveredstatements="92" conditionals="0" coveredconditionals="0" methods="21" coveredmethods="21"/>
-      <file name="studentRepository.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/repositories/studentRepository.js">
+      <file name="studentRepository.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/repositories/studentRepository.js">
         <metrics statements="43" coveredstatements="35" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -403,7 +403,7 @@
         <line num="95" count="0" type="stmt"/>
         <line num="102" count="1" type="stmt"/>
       </file>
-      <file name="teacherRepository.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/repositories/teacherRepository.js">
+      <file name="teacherRepository.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/repositories/teacherRepository.js">
         <metrics statements="44" coveredstatements="30" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -450,7 +450,7 @@
         <line num="96" count="0" type="stmt"/>
         <line num="103" count="1" type="stmt"/>
       </file>
-      <file name="userRepository.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/repositories/userRepository.js">
+      <file name="userRepository.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/repositories/userRepository.js">
         <metrics statements="38" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -494,7 +494,7 @@
     </package>
     <package name="src.routes">
       <metrics statements="50" coveredstatements="50" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="adminRoutes.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/routes/adminRoutes.js">
+      <file name="adminRoutes.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/routes/adminRoutes.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -503,7 +503,7 @@
         <line num="6" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
       </file>
-      <file name="loginRoutes.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/routes/loginRoutes.js">
+      <file name="loginRoutes.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/routes/loginRoutes.js">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -517,7 +517,7 @@
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
       </file>
-      <file name="studentRoutes.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/routes/studentRoutes.js">
+      <file name="studentRoutes.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/routes/studentRoutes.js">
         <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -530,7 +530,7 @@
         <line num="10" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
       </file>
-      <file name="teacherRoutes.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/routes/teacherRoutes.js">
+      <file name="teacherRoutes.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/routes/teacherRoutes.js">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -544,7 +544,7 @@
         <line num="11" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
       </file>
-      <file name="userRoutes.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/routes/userRoutes.js">
+      <file name="userRoutes.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/routes/userRoutes.js">
         <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -562,7 +562,7 @@
     </package>
     <package name="src.services">
       <metrics statements="203" coveredstatements="192" conditionals="76" coveredconditionals="65" methods="27" coveredmethods="27"/>
-      <file name="authorizationService.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/services/authorizationService.js">
+      <file name="authorizationService.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/services/authorizationService.js">
         <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -586,7 +586,7 @@
         <line num="31" count="2" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
       </file>
-      <file name="loginService.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/services/loginService.js">
+      <file name="loginService.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/services/loginService.js">
         <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -600,7 +600,7 @@
         <line num="18" count="12" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
       </file>
-      <file name="studentService.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/services/studentService.js">
+      <file name="studentService.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/services/studentService.js">
         <metrics statements="36" coveredstatements="34" conditionals="16" coveredconditionals="14" methods="5" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -639,7 +639,7 @@
         <line num="75" count="1" type="stmt"/>
         <line num="78" count="1" type="stmt"/>
       </file>
-      <file name="teacherService.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/services/teacherService.js">
+      <file name="teacherService.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/services/teacherService.js">
         <metrics statements="74" coveredstatements="67" conditionals="34" coveredconditionals="27" methods="9" coveredmethods="9"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -716,7 +716,7 @@
         <line num="170" count="1" type="stmt"/>
         <line num="173" count="1" type="stmt"/>
       </file>
-      <file name="userService.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/services/userService.js">
+      <file name="userService.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/services/userService.js">
         <metrics statements="61" coveredstatements="59" conditionals="22" coveredconditionals="20" methods="8" coveredmethods="8"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -783,7 +783,7 @@
     </package>
     <package name="src.validators">
       <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-      <file name="studentValidator.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/validators/studentValidator.js">
+      <file name="studentValidator.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/validators/studentValidator.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -791,7 +791,7 @@
         <line num="11" count="7" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
       </file>
-      <file name="teacherValidator.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/validators/teacherValidator.js">
+      <file name="teacherValidator.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/validators/teacherValidator.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -799,7 +799,7 @@
         <line num="11" count="8" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
       </file>
-      <file name="userValidator.js" path="/home/javier/softwareBuilders/express/ejercicio-entregable-final/src/validators/userValidator.js">
+      <file name="userValidator.js" path="/home/javier/softwareBuilders/express/javier_gomez_proyecto_final/src/validators/userValidator.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
