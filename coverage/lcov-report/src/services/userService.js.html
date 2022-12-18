@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.37% </span>
+                <span class="strong">62.29% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>35/61</span>
+                <span class='fraction'>38/61</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.9% </span>
+                <span class="strong">54.54% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/22</span>
+                <span class='fraction'>12/22</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.37% </span>
+                <span class="strong">62.29% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>35/61</span>
+                <span class='fraction'>38/61</span>
             </div>
         
             
@@ -195,11 +195,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -213,37 +213,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -344,8 +344,8 @@ const createNewUser = async (userData) =&gt; {
     userData.email
   );
 &nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (isAlreadyRegistered) {
-<span class="cstat-no" title="statement not covered" >    throw {</span>
+  if (isAlreadyRegistered) {
+    throw {
       status: 403,
       message: "User already registered with provided email",
     };
@@ -358,8 +358,8 @@ const createNewUser = async (userData) =&gt; {
 &nbsp;
 const updateUser = async (userId, userData) =&gt; {
   const userById = await userRepository.getUserById(userId);
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!userById) {
-<span class="cstat-no" title="statement not covered" >    throw { status: 404, message: "User not found provided id" };</span>
+  if (!userById) {
+    throw { status: 404, message: "User not found provided id" };
   }
 &nbsp;
   const updatedUser = await userRepository.updateUser(userId, userData);
@@ -369,8 +369,8 @@ const updateUser = async (userId, userData) =&gt; {
 const deleteUser = async (userId) =&gt; {
   const user = await userRepository.getUserById(userId);
 &nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!user) {
-<span class="cstat-no" title="statement not covered" >    throw { status: 404, message: "User not found for provided user id" };</span>
+  if (!user) {
+    throw { status: 404, message: "User not found for provided user id" };
   }
 &nbsp;
   const hasTeacher = await teacherRepository.getTeacherByUserId(userId);
@@ -451,7 +451,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-12-18T01:19:30.218Z
+                at 2022-12-18T02:11:40.338Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

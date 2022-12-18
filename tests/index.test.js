@@ -191,7 +191,6 @@ describe("Testing /api/user CRUD whit session authorization", () => {
       .send();
     expect(res.status).toBe(200);
     expect(res.body.message).toEqual("User deleted successfully");
-    console.log(res.body);
   });
 });
 
@@ -261,7 +260,7 @@ describe("Testing /api/teacher CRUD whit session authorization", () => {
     expect(res.body.message).toBe("Teacher updated succesfully");
     expect(res.body.updatedTeacher).toHaveProperty("name", "TeacherUpdated");
   });
-  
+
   test("DELETE /api/teacher/:id should delete the teacher with the provided id", async () => {
     const res = await request(app)
       .delete("/api/teacher/d864009c-d072-4a0d-b13c-e34b48f8ed01")
@@ -293,7 +292,7 @@ describe("Testing /api/student CRUD whit session authorization", () => {
     expect(res.body.allStudents).toBeInstanceOf(Array);
     expect(res.body.allStudents.length).toBeGreaterThan(0);
   });
- 
+
   test("GET /api/student/:id should respond with an object containing the student data", async () => {
     const res = await request(app)
       .get("/api/student/9be30696-84bf-4faa-a6b8-6dafc6a7d232")
@@ -332,7 +331,7 @@ describe("Testing /api/student CRUD whit session authorization", () => {
         name: "StudentUpdated",
         last_name: "One",
         date_of_birth: "1996-05-25",
-        TeacherId: "5e052f07-d7da-452e-b0a2-9ee607cb93b0"
+        TeacherId: "5e052f07-d7da-452e-b0a2-9ee607cb93b0",
       });
     expect(res.status).toBe(200);
     expect(res.body.message).toBe("Student updated succesfully");
@@ -346,7 +345,7 @@ describe("Testing /api/student CRUD whit session authorization", () => {
       .send();
     expect(res.status).toBe(200);
     expect(res.body.message).toEqual("Student deleted successfully");
-  }); 
+  });
 });
 
 describe("Testing /api/user CRUD with wrong or missing parameters", () => {
@@ -361,20 +360,152 @@ describe("Testing /api/user CRUD with wrong or missing parameters", () => {
   });
 
   test("GET /api/user:id should throw an error when user id does not exists", async () => {
-    const res = await request(app).get("/api/user/22fdbaac-5e36-40e1-87d0-ffb45146d7a6").set("Authorization", token).send();
+    const res = await request(app)
+      .get("/api/user/22fdbaac-5e36-40e1-87d0-ffb45146d7a6")
+      .set("Authorization", token)
+      .send();
     expect(res.status).toBe(404);
     expect(res.body.error).toEqual("User not found for provided user id");
-  })
+  });
 
-  
+  test("POST /api/user should throw an error when email is already in use", async () => {
+    const res = await request(app)
+      .post("/api/user")
+      .set("Authorization", token)
+      .send({ email: "user1@example.com", password: "asdf" });
+    expect(res.status).toBe(403);
+    expect(res.body.error).toEqual(
+      "User already registered with provided email"
+    );
+  });
 
+  test("POST /api/user should throw an error if email has invalid format or password is missing", async () => {
+    const res = await request(app)
+      .post("/api/user")
+      .set("Authorization", token)
+      .send({ email: "user1", password: "" });
+    expect(res.status).toBe(400);
+    expect(res.body.errors).toEqual([
+      {
+        value: "user1",
+        msg: "Invalid value",
+        param: "email",
+        location: "body",
+      },
+      {
+        value: "",
+        msg: "Invalid value",
+        param: "password",
+        location: "body",
+      },
+    ]);
+  });
 
-})
+  test("PUT /api/user/:id should throw an error if the user does not exist", async () => {
+    const res = await request(app)
+      .put("/api/user/22fdbaac-5e36-40e1-87d0-ffb45146d7a6")
+      .set("Authorization", token)
+      .send({
+        email: "user@example.com",
+        password: "1234",
+        active: "true",
+        type: "no-admin",
+      });
+    expect(res.status).toBe(404);
+    expect(res.body.error).toEqual("User not found provided id");
+  });
+  test("PUT /api/user/:id should throw an error if params are missing", async () => {
+    const res = await request(app)
+      .put("/api/user/22fdbaac-5e36-40e1-87d0-ffb45146d7a7")
+      .set("Authorization", token)
+      .send({ email: "", password: "", active: "", type: "" });
+    expect(res.status).toBe(400);
+    expect(res.body.errors).toEqual([
+      {
+        value: "",
+        msg: "Invalid value",
+        param: "email",
+        location: "body",
+      },
+      {
+        value: "",
+        msg: "Invalid value",
+        param: "password",
+        location: "body",
+      },
+    ]);
+  });
 
+  test("DELETE /api/user/:id should throw an error if the user does not exist", async () => {
+    const res = await request(app)
+      .delete("/api/user/22fdbaac-5e36-40e1-87d0-ffb45146d7a6")
+      .set("Authorization", token)
+      .send();
+    expect(res.status).toBe(404);
+    expect(res.body.error).toEqual("User not found for provided user id");
+  });
+});
 
-/* desccribe("Testing password encryption", () => {
-  test("Should throw an error when trying to get a user with ")
+describe("Testing login", () => {
+  beforeAll(async () => {
+    await request(app).post("/logout").send();
+  });
+  test("POST /login Should throw an error if the user does not exist", async () => {
+    const res = await request(app)
+      .post("/login")
+      .send({ username: "nouser1@example.com", password: "asdf" });
 
+    expect(res.status).toBe(404);
+    expect(res.type).toBe("text/html");
+    expect(res.text).toContain(
+      " <p>Error - Must log in to access this resource</p>"
+    );
+  });
 
+  test("POST /login Should throw an error if the password is incorrect", async () => {
+    const res = await request(app)
+      .post("/login")
+      .send({ username: "user1@example.com", password: "asdfgh" });
+    expect(res.status).toBe(403);
+    expect(res.type).toBe("text/html");
+    expect(res.text).toContain(
+      " <p>Error - Must log in to access this resource</p>"
+    );
+  });
+});
 
-}); */
+describe("Testing middlewares", () => {
+  test("GET /users should throw an error if the user is not admin", async () => {
+    let token;
+    const response = await request(app)
+      .post("/login")
+      .send({ username: "user1@example.com", password: "asdf" });
+    expect(response.status).toBe(302);
+    token = response.headers.authorization;
+    const res = await request(app)
+      .get("/users")
+      .set("Authorization", token)
+      .send();
+    expect(res.status).toBe(401);
+    expect(res.body.error).toEqual(
+      "Unauthorized, only admins can access this page"
+    );
+  });
+
+  test("GET /users should render users.html if user is admin", async () => {
+    let token;
+    const response = await request(app)
+      .post("/login")
+      .send({ username: "user3@example.com", password: "as12" });
+    expect(response.status).toBe(302);
+    token = response.headers.authorization;
+
+    const res = await request(app)
+      .get("/users")
+      .set("Authorization", token)
+      .send();
+    expect(res.status).toBe(200);
+    expect(res.type).toBe("text/html");
+    expect(res.text).toContain("  <title>Users</title>");
+  });
+});
